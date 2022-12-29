@@ -14,7 +14,7 @@ import gudang.Tools.DBConnection;
 
 /**
  *
- * @author shfanda
+ * @author shoffan darul
  */
 public class BarangMasuk extends javax.swing.JFrame {
 
