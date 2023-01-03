@@ -277,7 +277,7 @@ public class BarangMasuk extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Product Sans", 2, 12)); // NOI18N
         jLabel7.setText("Otomatis Terbuat");
 
-        jMenu1.setText("File");
+        jMenu1.setText("Gudang");
 
         MenuForms.setText("Forms");
 

@@ -76,7 +76,9 @@ public class TipeBarang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        TxtTipeBarang = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblTipeBarang = new javax.swing.JTable();
         BtnInsert = new javax.swing.JButton();
@@ -85,8 +87,6 @@ public class TipeBarang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         TxtIDTipeBarang = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        TxtTipeBarang = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuForms = new javax.swing.JMenu();
@@ -102,8 +102,13 @@ public class TipeBarang extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Product Sans", 1, 24)); // NOI18N
-        jLabel1.setText("TIPE BARANG");
+        TxtTipeBarang.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Product Sans", 2, 12)); // NOI18N
+        jLabel7.setText("Otomatis Terbuat");
+
+        jLabel8.setFont(new java.awt.Font("Product Sans", 1, 24)); // NOI18N
+        jLabel8.setText("TIPE BARANG");
 
         TblTipeBarang.setFont(new java.awt.Font("Product Sans", 0, 12)); // NOI18N
         TblTipeBarang.setModel(new javax.swing.table.DefaultTableModel(
@@ -171,12 +176,7 @@ public class TipeBarang extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jLabel3.setText("Tipe Barang");
 
-        TxtTipeBarang.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Product Sans", 2, 12)); // NOI18N
-        jLabel7.setText("Otomatis Terbuat");
-
-        jMenu1.setText("File");
+        jMenu1.setText("Gudang");
 
         MenuForms.setText("Forms");
 
@@ -252,9 +252,10 @@ public class TipeBarang extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
@@ -269,19 +270,17 @@ public class TipeBarang extends javax.swing.JFrame {
                             .addComponent(BtnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(301, 301, 301)
-                        .addComponent(jLabel1)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGap(295, 295, 295)
+                        .addComponent(jLabel8)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -302,7 +301,7 @@ public class TipeBarang extends javax.swing.JFrame {
                         .addComponent(BtnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
@@ -318,88 +317,6 @@ public class TipeBarang extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_MenuTipeBarangActionPerformed
-
-    private void BtnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInsertActionPerformed
-        try {
-            String tipeBarang = TxtTipeBarang.getText(); //check //check
-
-            String sql = "insert into tipe_barang ( tipe_barang) values (?)"; //check
-            
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, tipeBarang); //check
-            
-            int rows = statement.executeUpdate();
-            
-            if (rows > 0) {
-                this.load_data();
-                JOptionPane.showMessageDialog(this, "Tipe Barang tersimpan!");
-                clear_txtfield();
-            }
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(e);
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_BtnInsertActionPerformed
-
-    private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
-        try {
-            String tipeBarang = TxtTipeBarang.getText(); //check //check
-            String idTerpilih = TxtIDTipeBarang.getText(); //check
-            
-            String sql = "update tipe_barang set tipe_barang = ? where id_tipe_barang = ?"; //check
-            
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, (tipeBarang)); //check
-            statement.setString(2, idTerpilih); //check
-     
-            
-            int konfirmasiUpdate = JOptionPane.showConfirmDialog(null, "Apakah anda ingin memperbarui tipe barang?"); //check
-            
-            if (konfirmasiUpdate == 0) {
-                int rows = statement.executeUpdate();
-            
-                if (rows > 0) {
-                    this.load_data();
-                    JOptionPane.showMessageDialog(this, "Tipe barang diperbarui!"); //check
-                    clear_txtfield();
-                }
-            }
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(e);
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_BtnUpdateActionPerformed
-
-    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
-        try {
-            String idTerpilih = TxtIDTipeBarang.getText(); //check
-            
-            String sql = "delete from tipe_barang where id_tipe_barang = ?"; //check
-            
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, idTerpilih);
-            
-            int konfirmasiUpdate = JOptionPane.showConfirmDialog(null, "Apakah anda ingin menghapus tipe barang ini?"); //check
-            
-            if (konfirmasiUpdate == 0) {
-                int rows = statement.executeUpdate();
-            
-                if (rows > 0) {
-                    this.load_data();
-                    JOptionPane.showMessageDialog(this, "Tipe barang dihapus!"); //check
-                    clear_txtfield();
-                }
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(e);
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_BtnDeleteActionPerformed
 
     private void MenuKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuKaryawanActionPerformed
         try {
@@ -425,7 +342,7 @@ public class TipeBarang extends javax.swing.JFrame {
 
     private void MenuBarangMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBarangMasukActionPerformed
         try {
-            new TipeBarang().setVisible(true);
+            new BarangMasuk().setVisible(true);
             this.setVisible(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
@@ -467,23 +384,104 @@ public class TipeBarang extends javax.swing.JFrame {
 
     private void TblTipeBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblTipeBarangMouseClicked
         int row = TblTipeBarang.getSelectedRow();
-          
-          String selectedID = (String) TblTipeBarang.getValueAt(row, 0);
-          TxtIDTipeBarang.setText(selectedID);
-          
-          try {
+
+        String selectedID = (String) TblTipeBarang.getValueAt(row, 0);
+        TxtIDTipeBarang.setText(selectedID);
+
+        try {
             String sql = "select * from tipe_barang where id_tipe_barang = " + selectedID;
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
-            
-              while (result.next()) {
-                  TxtIDTipeBarang.setText(result.getString(1));
-                  TxtTipeBarang.setText(result.getString(2));
-              }
-            } catch (SQLException e) {
-                e.printStackTrace();
+
+            while (result.next()) {
+                TxtIDTipeBarang.setText(result.getString(1));
+                TxtTipeBarang.setText(result.getString(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_TblTipeBarangMouseClicked
+
+    private void BtnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInsertActionPerformed
+        try {
+            String tipeBarang = TxtTipeBarang.getText(); //check //check
+
+            String sql = "insert into tipe_barang ( tipe_barang) values (?)"; //check
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, tipeBarang); //check
+
+            int rows = statement.executeUpdate();
+
+            if (rows > 0) {
+                this.load_data();
+                JOptionPane.showMessageDialog(this, "Tipe Barang tersimpan!");
+                clear_txtfield();
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BtnInsertActionPerformed
+
+    private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
+        try {
+            String tipeBarang = TxtTipeBarang.getText(); //check //check
+            String idTerpilih = TxtIDTipeBarang.getText(); //check
+
+            String sql = "update tipe_barang set tipe_barang = ? where id_tipe_barang = ?"; //check
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, (tipeBarang)); //check
+            statement.setString(2, idTerpilih); //check
+
+            int konfirmasiUpdate = JOptionPane.showConfirmDialog(null, "Apakah anda ingin memperbarui tipe barang?"); //check
+
+            if (konfirmasiUpdate == 0) {
+                int rows = statement.executeUpdate();
+
+                if (rows > 0) {
+                    this.load_data();
+                    JOptionPane.showMessageDialog(this, "Tipe barang diperbarui!"); //check
+                    clear_txtfield();
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BtnUpdateActionPerformed
+
+    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
+        try {
+            String idTerpilih = TxtIDTipeBarang.getText(); //check
+
+            String sql = "delete from tipe_barang where id_tipe_barang = ?"; //check
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, idTerpilih);
+
+            int konfirmasiUpdate = JOptionPane.showConfirmDialog(null, "Apakah anda ingin menghapus tipe barang ini?"); //check
+
+            if (konfirmasiUpdate == 0) {
+                int rows = statement.executeUpdate();
+
+                if (rows > 0) {
+                    this.load_data();
+                    JOptionPane.showMessageDialog(this, "Tipe barang dihapus!"); //check
+                    clear_txtfield();
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BtnDeleteActionPerformed
 
     private void TxtIDTipeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIDTipeBarangActionPerformed
         // TODO add your handling code here:
@@ -505,10 +503,10 @@ public class TipeBarang extends javax.swing.JFrame {
     private javax.swing.JTable TblTipeBarang;
     private javax.swing.JTextField TxtIDTipeBarang;
     private javax.swing.JTextField TxtTipeBarang;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

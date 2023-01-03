@@ -113,7 +113,7 @@ public class About extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu1.setText("Gudang");
 
         MenuForms.setText("Forms");
 
@@ -344,7 +344,7 @@ public class About extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            new BarangMasuk().setVisible(true);
+            new Barang().setVisible(true);
             this.setVisible(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Infobox: Error", JOptionPane.INFORMATION_MESSAGE);
